@@ -5,7 +5,7 @@ int main(void)
 {
 	int a = 1, b = 3, c = 6;
 
-	printf("      변수명  저장값     주소값	\n");
+	printf("변수명	저장값	주소값	\n");
 	printf("-----------------------------------------\n");
 	printf("	c	%d	%p\n", c, &c);
 	printf("	b	%d	%p\n", b, &b);
