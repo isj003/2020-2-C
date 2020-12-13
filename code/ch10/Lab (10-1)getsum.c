@@ -1,37 +1,26 @@
-﻿// file: char.c
-#define _CRT_SECURE_NO_WARNINGS //scanf() 오류를 방지하기 위한 상수 정의
+// file: getsum.c
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-#include <ctype.h> //문자 관련 함수는 헤더파일 ctype.h에 매크로로 정의
-
-void print2char(char);
+int getsum(int); //함수원형
 
 int main(void)
 {
-	char ch;
+	int max = 0;
 
-	printf("알파벳(종료x) 또는 다른 문자 입력하세요.\n");
-	do
-	{
-		printf("문자 입력 후 Enter : ");
-		scanf("%c", &ch);
-		getchar();		//enter 키 받음
-		if (isalpha(ch))
-			print2char(ch);
+	printf("1에서 n까지의 합을 구할 n을 입력하시오. >> ");
+	scanf("%d", &max);
 
-		else
-			printf("입력: %c\n", ch);
-	} while (ch != 'x' && ch != 'X'); //입력이 x 또는 X이면 종료
+	printf("1에서 %d까지의 합: %d\n", max, getsum(max)); // 함수호출
 
 	return 0;
 }
 
-void print2char(char ch)
+int getsum(int n)
 {
-	if (isupper(ch))
-		printf("입력: %c, 변환: %c\n", ch, tolower(ch));
-	else
-		printf("입력: %c, 변환: %c\n", ch, toupper(ch));
+	int sum = 0;
+	for (int i = 1; i <= n; i++)
+		sum += i;
 
-	return;
+	return sum;
 }
