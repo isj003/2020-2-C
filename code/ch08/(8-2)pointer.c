@@ -1,4 +1,4 @@
-﻿// file: pointer.c
+// file: pointer.c
 #include < stdio.h>
 
 int main(void)
@@ -8,9 +8,9 @@ int main(void)
 	ptrint = &data;
 
 	printf("변수명	주소값	저장값\n");
-	printf("-------------------------------------\n);
-		printf("	data	%p	%d\n", $data, data);
-	printf("ptrint	%p	%p\n", &ptrint, ptrint);
+	printf("-------------------------------------\n");
+	printf("  data %p	     %d\n", &data, data);
+	printf("ptrint %p %p\n", &ptrint, ptrint);
 
 	return 0;
 }
