@@ -1,37 +1,33 @@
-﻿// file: char.c
-#define _CRT_SECURE_NO_WARNINGS //scanf() 오류를 방지하기 위한 상수 정의
+// file: numberguess.c
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-#include <ctype.h> //문자 관련 함수는 헤더파일 ctype.h에 매크로로 정의
+#include <stdlib.h> // rand(), srand()를 위한 헤더파일 포함
+#include <time.h> // time() 위한 헤더파일 포함
 
-void print2char(char);
+#define MAX 100
 
 int main(void)
 {
-	char ch;
+	int guess, input;
 
-	printf("알파벳(종료x) 또는 다른 문자 입력하세요.\n");
-	do
-	{
-		printf("문자 입력 후 Enter : ");
-		scanf("%c", &ch);
-		getchar();		//enter 키 받음
-		if (isalpha(ch))
-			print2char(ch);
+	srand((long)time(NULL));
+	guess = rand() % MAX + 1;
 
+	printf("1에서 %d 사이에서 한 정수가 결정되었습니다.\n", MAX);
+	printf("이 정수는 무엇일까요? 입력해 보세요. : ");
+
+	while (scanf("%d", &input)) {
+		if (input > guess)
+			printf("입력한 수보다 작습니다. 다시 입력하세요. : ");
+		else if (input < guess)
+			printf("입력한 수보다 큽니다. 다시 입력하세요. : ");
 		else
-			printf("입력: %c\n", ch);
-	} while (ch != 'x' && ch != 'X'); //입력이 x 또는 X이면 종료
+		{
+			puts("정답입니다.");
+			break;
+		}
+	}
 
 	return 0;
-}
-
-void print2char(char ch)
-{
-	if (isupper(ch))
-		printf("입력: %c, 변환: %c\n", ch, tolower(ch));
-	else
-		printf("입력: %c, 변환: %c\n", ch, toupper(ch));
-
-	return;
 }
