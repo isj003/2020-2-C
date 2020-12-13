@@ -1,20 +1,18 @@
-﻿//file: dowhile.c
-#define _CRT_SECURE_NO_WARNINGS //scanf() 오류를 방지하기 위한 상우 정의
+//file: dowhileenumber.c
 
 #include <stdio.h>
+#define MAX 5
 
 int main(void)
 {
-	int input;
+	int n = 1;
 
 	do
 	{
-		printf("정수 또는 0(종료)을 입력: ");
-		scanf("%d", &input);
-	} while (input != 0); //while (input);
+	 printf("%d\n", n++);
+	} while (n <= MAX);
 
-	puts("종료합니다.");
+	printf("\n제어변수 n → %d\n", n);
 
 	return 0;
-
 }
