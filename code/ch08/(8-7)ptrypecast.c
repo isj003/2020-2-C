@@ -1,16 +1,21 @@
-﻿// file: calcptr.c
+// file: ptrtypecast.c
 #include <stdio.h>
 
 int main(void)
 {
-	char* pc = (char*)100; //가능하나 잘 이용하지 않음
-	int* pi = (int*)100;
-	double* pd = (double*)100;
-	pd = 100;
+	int value = 0x61626364;
+	int *pi = &value;
+	char *pc = (char *) &value;
 
-	printf("%u  %u  %u\n", (int)(pc - 1), (int)pc, (int)(pc + 1));
-	printf("%u  %u  %u\n", (int)(pi - 1), (int)pi, (int)(pi + 1));
-	printf("%u  %u  %u\n", (int)(pd - 1), (int)pd, (int)(pd + 1));
+	printf("변수명	저장값	주소값\n");
+	printf("------------------------------------\n");
+	printf("value   %0#x %u\n", value, pi); //정수출력
+	//
+	for (int i = 0; i <= 3; i++)
+	{
+		char ch = *(pc + i);
+		printf("*(pc+%d) %0#6x  %2c %u\n", i, ch, ch, pc + i);
+	}
 
 	return 0;
 }
