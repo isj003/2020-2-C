@@ -1,16 +1,22 @@
-﻿// file: calcptr.c
+// file: neighborvar.c
 #include <stdio.h>
 
 int main(void)
 {
-	char* pc = (char*)100; //가능하나 잘 이용하지 않음
-	int* pi = (int*)100;
-	double* pd = (double*)100;
-	pd = 100;
+	int a = 1, b = 3, c = 6;
 
-	printf("%u  %u  %u\n", (int)(pc - 1), (int)pc, (int)(pc + 1));
-	printf("%u  %u  %u\n", (int)(pi - 1), (int)pi, (int)(pi + 1));
-	printf("%u  %u  %u\n", (int)(pd - 1), (int)pd, (int)(pd + 1));
+	printf("      변수명  저장값     주소값	\n");
+	printf("-----------------------------------------\n");
+	printf("	c	%d	%p\n", c, &c);
+	printf("	b	%d	%p\n", b, &b);
+	printf("	a	%d	%p\n", a, &a);
+
+
+	int* p = &c;
+	printf("	c	%d	%p\n", *p, p);
+	printf("	b	%d	%p\n", *(p + 3), p + 3);
+	printf("	a	%d	%p\n", *(p + 6), p + 6);
 
 	return 0;
 }
+
