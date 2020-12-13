@@ -1,37 +1,38 @@
-﻿// file: char.c
-#define _CRT_SECURE_NO_WARNINGS //scanf() 오류를 방지하기 위한 상수 정의
+// file: incrementary.c
 #include <stdio.h>
 
-#include <ctype.h> //문자 관련 함수는 헤더파일 ctype.h에 매크로로 정의
-
-void print2char(char);
+//함수 incrementary의 함수원형
+void incrementary(int ary[], int n, int SIZE);
+// 함수 printary의 함수원형
+void printary(int* data, int SIZE);
 
 int main(void)
 {
-	char ch;
+	int data[] = { 4,7,2,3,5 };
+	int aryLength = sizeof(data) / sizeof(int);
 
-	printf("알파벳(종료x) 또는 다른 문자 입력하세요.\n");
-	do
-	{
-		printf("문자 입력 후 Enter : ");
-		scanf("%c", &ch);
-		getchar();		//enter 키 받음
-		if (isalpha(ch))
-			print2char(ch);
-
-		else
-			printf("입력: %c\n", ch);
-	} while (ch != 'x' && ch != 'X'); //입력이 x 또는 X이면 종료
+	//배열 출력을 위해 printary() 함수호출
+	printary(data, aryLength);
+	//배열 원소를 모두 3씩 증가시키기 위해 incrementary() 함수호출
+	incrementary(data, 3, aryLength);
+	printf("배열 원소에 각각 3을 더한 결과: \n");
+		// 결과를 알아 보기 printary() 함수호출
+		printary(data, aryLength);
 
 	return 0;
 }
 
-void print2char(char ch)
+//배열크기가 SIZE인 배열 ary의 모든 원소를 n만큼 증가시키는 함수
+void incrementary(int ary[], int n, int SIZE)
 {
-	if (isupper(ch))
-		printf("입력: %c, 변환: %c\n", ch, tolower(ch));
-	else
-		printf("입력: %c, 변환: %c\n", ch, toupper(ch));
+	for (int i = 0; i < SIZE; i++)
+		*(ary + i) += n; //또는 ary[i] += n;
+}
 
-	return;
+//배열크기가 SIZE인 배열 ary의 모든 원소를 출력하는 함수
+void printary(int* data, int SIZE)
+{
+	for (int i = 0; i < SIZE; i++)
+		printf("%2d ", data[i]);
+	printf("\n");
 }
