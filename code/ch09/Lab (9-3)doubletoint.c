@@ -1,4 +1,4 @@
-﻿// file: doubletoint.c
+// file: doubletoint.c
 #include <stdio.h>
 
 int main(void)
@@ -11,7 +11,7 @@ int main(void)
 	p[3] = 4;
 
 	for (int i = 0; i < 4; i++)
-		printf("%u %d\n", p + i, *(p + i));
+		printf("%p %d\n", p + i, *(p + i));
 
 	return 0;
 }
