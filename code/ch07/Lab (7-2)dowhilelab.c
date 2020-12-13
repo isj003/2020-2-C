@@ -1,4 +1,4 @@
-﻿// file: forlab.c
+// file: dowhilelab.c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -14,7 +14,7 @@ int main(void)
 	do
 	{
 		digit = result / devider;
-		result %= devider;
+			result %= devider;
 		printf("%3d단위 출력: %d\n", devider, digit);
 		devider /= 10;;
 	} while (devider >= 1);
