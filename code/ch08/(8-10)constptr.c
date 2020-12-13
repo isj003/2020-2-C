@@ -1,23 +1,19 @@
-﻿// file: variousop.c
+// file: constptr.c
 #include <stdio.h>
 
-int main(void)
+int main()
 {
-	int i;
-	int* pi = &i;	//포인트 선언
-	int** dpi = &pi;	//이중포인터 선언
+	int i = 10, j = 20;
+	const int* p = &i;	//*p가 상수로 *p로 수정할 수 없음
+	//*p = 20 //오류 발생
+	p = &j;
+	printf("%d\n", *p);
 
-	*pi = 5;
-	*pi += 1;
-	printf("%d\n", i);
-	// 후위 연산자 pi++는 전위 연산자보다 *pi보다 빠름
-	printf("%d\n", (*pi)++);	//*pi++ 는 *(pi**)로 (*pi)++와 다름
-	printf("%d\n", *pi);
-
-	*pi = 10;
-	printf("%d\n", ++ * pi);	//***pi와 ++(*pi)는 같음
-	printf("%d\n", ++ * *dpi);	//++**dpi와 ++(**dpi)는 같음
-	printf("%d\n", i);
+	double d = 7.8, e = 2.7;
+	double* const pd = &d;
+	//pd = &e;	//pd가 상수로 다른 주소값을 저장할 수 없음
+	*pd = 4.4;
+	printf("%f\n", *pd);
 
 	return 0;
 }
