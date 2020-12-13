@@ -1,33 +1,50 @@
-﻿// file: functionadd2.c
-#include <stdio.h>
+// file: functioncall.c
+#include<stdio.h>
 
-// int add2(int a, int b); //이 워치도 가능
+int add2(int a, int b);	//int add2(int, int)도 가능
+int findMax2(int, int);	//int findMax2(int a, int b)도 가능
+void printMin(int, int);	//int printMin(int a, int b)도 가능
 
 int main(void)
 {
 	int a = 3, b = 5;
-	int add2(int a, int b); // int add2(int, int)도 가능
 
-	//위 함수원형이 없으면 함수호출에서 오류발생
-	int sum = add2(a, b);
-	printf(" 합: %d\n", sum);
+	int max = findMax2(a, b);
+	printf("최대: %d\n", max);
+	printf("합: %d\n", add2(a, b));
+
+	//반환값이 없는 함수호출은 일반문장처럼 사용
+	printMin(2, 5);
 
 	return 0;
-
 }
 
-// 함수 add2 의 함수구현 또는 함수정의 부분
+// 이하 함수 add2,findMax2,findMin2, printfMin 구현
 int add2(int a, int b)
 {
 	int sum = a + b;
 
-	return (sum); // 괄호는 생략 가능
+	return (sum);
 }
 
-//위 main() 함수에서 호출이 없으므로 이 함수구현은 실행되지 않음
-int findMin(int x, int y)
+int findMax2(int a, int b)
+{
+	int max = a > b ? a : b;
+
+	return max;
+}
+
+int findMin2(int x, int y)
 {
 	int min = x < y ? x : y;
 
 	return (min);
+}
+
+void printMin(int a, int b)
+{
+	int min = a < b ? a : b;
+	printf("최소: %d\n", min);
+
+	return;	//생략 가능
 }
